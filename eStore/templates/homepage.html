@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<!-- Carousel -->
+<div id="carouselExampleControls" class="carousel slide mt-2"
+    data-ride="carousel" style="border-radius: 10px;">
+    <div class="carousel-inner" style="border-radius: 10px;">
+        <div class="carousel-item active" style="border-radius: 10px;">
+            <img class="d-block w-100"
+                src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp"
+                alt="First slide">
+        </div>
+        <div class="carousel-item" style="border-radius: 10px;">
+            <img class="d-block w-100"
+                src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp"
+                alt="Second slide">
+        </div>
+        <div class="carousel-item" style="border-radius: 10px;">
+            <img class="d-block w-100"
+                src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp"
+                alt="Third slide">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls"
+        role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls"
+        role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!-- END Carousel -->
+
+
+
+<!-- LOGIN FORM -->
+<div class="container text-center mt-5" style="text-align: center;">
+    <div class="row mt-5 text-center justify-content-center"  style="text-align: center;"><h1>Welcome -<h1 style="color: rgb(41, 124, 52);"> - {{request.user.first_name}}</h1></h1></div>
+    <div class="row justify-content-center"><h4>Your are Successfully logged into Website.</h4></div>
+    <div class="row justify-content-center"><h4>Please feel free to navigate through site.</h4></div>
+    <div class="row justify-content-center"><h4 style="color: red;">Enjoy :D</h4></div>
+</div>
+<!-- END LOGIN FORM -->
+{% endblock body %}

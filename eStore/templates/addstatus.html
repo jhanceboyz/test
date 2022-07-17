@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row"><h1 style="text-align: center;">Add Status</h1></div>
+    <div class="row mt-5 justify-content-center">
+        <div class="input-group justify-content-center"">
+            <form action="{% url 'addstatus' %}" method="post">
+                {% csrf_token %}
+                <div class="form-outline">
+                    <input type="text" class="form-control" name="status" />
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

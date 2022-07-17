@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+<h1 style="text-align: center;">TICKETS</h1>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>TicketID</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Device</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">
+          <form action="{%url 'tickets' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="searchticket" placeholder="Search a ticket">
+            <button type="submit">Go</button>
+          </form>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ticket in Tickets %}
+      <tr>
+        <td>
+          <form action="{%url 'ticketdetails' ticket.id %}" method="post"> {% csrf_token %}<button
+              type="submit" class="btn btn-outline-dark p-0 w-50">{{ticket.id}}</button></form>
+        </td>
+        <td>{{ticket.customer.name}}</td>
+        <td>{{ticket.customer.phonenumber}}</td>
+        <td>{{ticket.device}}</td>
+        <td>{{ticket.date}}</td>
+        <td>{{ticket.time}}</td>
+        <td style="color: rgba(13, 133, 13, 0.904);"><b>{{ticket.status}}</b></td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock body %}

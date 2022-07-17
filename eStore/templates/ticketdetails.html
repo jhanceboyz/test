@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h2 style="background-color: rgb(224, 235, 224); text-align: center; border-radius: 10px; margin-top: 10px;">Device status :- {{ticketdata.status}}</h2>
+    <h1 style="text-align: center;">Your ticket number is :- 000{{ticketdata.id}}</h1>
+    <h2 style="text-align: center;">Customer name :- {{ticketdata.customer.name}}</h2>
+    <h2 style="text-align: center;">Repair notes:- {{ticketdata.description}}</h2>
+    <form class="container" action="{% url 'changestatus' %}" method="post">
+        {% csrf_token %}
+        <div class="row justify-content-center mt-5">
+            <input type="text" name="ticket_data" style="display: none;" value="{{ticketdata.id}}" id="">
+            <span><h2>Change status to :-</h2></span>
+            <select name="status_data" class="form-control w-25">
+                {% for status in Status %}
+                    <option value="{{status.id}}"><strong>{{status.name}}</strong></option>
+                {% endfor %}
+            </select>
+            <input class="btn btn-outline-success h-25 ml-2" type="submit" value="Update Status">
+        </div>
+    </form>
+{% endblock body %}
