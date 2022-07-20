@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponsePermanentRedirect, HttpRespons
 from django.shortcuts import render
 from eStore import urls
 from django.contrib.auth import authenticate, login, logout
-
+from eStore.models import Ticket,Fault,Customer,Status, Transaction
 # Create your views here.
 
 def index(request):
@@ -30,3 +30,10 @@ def navigate(request):
     if request.user.is_authenticated:
         return HttpResponsePermanentRedirect(reverse("homepage"))
     return HttpResponseRedirect(reverse("index"))
+
+def customerView(request):
+    if request.method == "POST":
+        i = request.POST['customerticketcheck']
+        print(Ticket.objects.filter(id = i))
+        return render(request, 'customerview.html', {"Tickets": Ticket.objects.filter(id = i)})
+    return render(request,'customerview.html')
